@@ -1,0 +1,30 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>0331-作業</title>
+    <style>
+    
+    </style>
+    <script>//單行註解
+    function hello(){
+        name=prompt("你是誰","無力");
+        while(name=="null" || name == "")
+            name=prompt("你到底是誰")
+
+        alert("你好"+name);
+
+        if(confirm("你確定嗎")){
+            alert("你按了確定");
+        }else{
+            alert("你按了取消");
+        }
+
+    }
+
+    </script>
+</head>
+<body>
+    <p><a href="index.html">回首頁</a></p>
+    <button onclick="hello();">打招呼</button>
+</body>
+</html>
