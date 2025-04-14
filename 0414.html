@@ -1,0 +1,39 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>0414-作業</title>
+    <style>
+        #timer{
+            font-size: 64pt;
+        }
+    </style>
+    <script>
+        function pageInit(){
+            t1=0;
+        }
+        function timerStart(){
+            time=0;
+            document.getElementById("timer").innerHTML=
+            t1=setInterval(function(){
+                time++;
+                mm=Math.floor(time/60);
+                ss=time%60;
+                mm=(mm>9)?mm:"0"+mm;
+                ss=(ss>9)?ss:"0"+ss;
+                document.getElementById("timer").innerHTML=`${mm}:${ss}`;
+            },1000);
+        }
+        function timerStop(){
+            (t1)?clearInterval(t1):alert("尚未開始計時");
+            t1=0;
+        }
+    </script>
+</head>
+<body>
+    <p><a href="index.html">回首頁</a></p>
+    <div id="timer">00:00</div>
+    <button onclick="timerStart()">開始</button>
+    <button onclick="timerStop()">停止</button>
+    
+</body>
+</html>
