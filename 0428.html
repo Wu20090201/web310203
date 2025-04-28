@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>0428打字遊戲</title>
+    <meta charset="UTF-8">
+    <style>
+        .word{
+            display: inline-block;
+            padding: 10px;
+            border: 5px solid gray;
+            text-align: center;
+            font-size: 32pt;
+            position: relative;
+        }
+    </style>
+    <script>
+        function kbDown(){
+            /*console.log(event.key);*/ /*顯示按下的按鍵*/
+            event.preventDefault();/*不執行預設行為*/
+            if(event.key == "Enter"){
+                input="";
+            }else if(event.key.length == 1){
+                input+=event.key;
+                console.log(input);
+            }
+        }
+        function genWord(){
+            var wordlist=["hello","apple","banana","world","cake"];
+            var idx=Math.floor(Math.random() * wordlist.length);
+            return wordlist[idx];
+
+
+        }
+        function gameStart(){
+            document.getElementById("btnStart").style.display="none";
+            t1=setInterval(function(){
+                var a=document.createElement("div");
+                a.className="word";
+                a.innerHTML=genWord();
+                a.pos={x:Math,y:0};
+                a.style.left=a.pos.x+"px";
+                a.move=setInterval(function(o){
+                    o.pos.y+=5;
+                    o.style.top=o.pos.y+"px";
+                    if(o.pos.y > (document.body.offsetHeight-100)) {
+                        clearInterval(o.move);
+                        o.remove();
+                    } 
+                },50,a);
+                document.body.appendChild(a);
+            },2000);
+        }
+
+    </script>
+</head>
+<body onkeydown="kbDown();">
+    <button id="btnStart" onclick="gameStart();">遊戲開始</button>
+
+</body>
+</html>
